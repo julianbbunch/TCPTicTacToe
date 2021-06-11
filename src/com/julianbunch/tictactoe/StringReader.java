@@ -7,18 +7,18 @@ public class TicTacToeReader {
         mBoard = board;
     }
 
-    public Square[][] createGame() {
-        Square[][] board = new Square[TicTacToe.SIZE][TicTacToe.SIZE];
+    public Board createBoard() {
+        Board board = new Board();
         int strIndex = 0, boardIndex = 0;
 
-        while (strIndex < board.length && boardIndex < TicTacToe.SIZE * TicTacToe.SIZE) {
+        while (strIndex < Board.SIZE && boardIndex < Board.SIZE * Board.SIZE) {
             if ('X' == mBoard.charAt(strIndex) || 'x' == mBoard.charAt(strIndex)) {
-                board[boardIndex / TicTacToe.SIZE][boardIndex % TicTacToe.SIZE]
-                        = new Square(Square.Value.X);
+                board.setSquare(boardIndex / Board.SIZE,
+                        boardIndex % Board.SIZE, Square.Value.X);
                 boardIndex++;
             } else if ('O' == mBoard.charAt(strIndex) || 'o' == mBoard.charAt(strIndex)) {
-                board[boardIndex / TicTacToe.SIZE][boardIndex % TicTacToe.SIZE]
-                        = new Square(Square.Value.O);
+                board.setSquare(boardIndex / Board.SIZE,
+                        boardIndex % Board.SIZE, Square.Value.O);
                 boardIndex++;
             }
             strIndex++;
